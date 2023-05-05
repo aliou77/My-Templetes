@@ -1,0 +1,770 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Light.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 200;
+  font-size: 16px;
+  font-family: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  background-color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  display: flex;
+}
+
+main {
+  display: flex;
+  width: 100%;
+}
+
+/* Style the tab */
+.slide-menu {
+  max-height: 430px;
+  height: 429px;
+}
+
+#tab {
+  height: 100vh;
+  padding-top: 10px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+#tab a {
+  position: relative;
+  background-color: inherit;
+  cursor: pointer;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.439);
+  color: rgba(128, 128, 128, 0.439);
+  font-size: 18px;
+  transition: all 0.2s;
+}
+#tab a svg {
+  font-size: 27px;
+  transition: all 0.2s;
+}
+#tab a:hover {
+  color: white;
+}
+#tab a[aria-selected=true]:first-child::after {
+  content: "";
+  background-color: black;
+}
+#tab a[aria-selected=true]::after {
+  content: "";
+  height: 50px;
+  position: absolute;
+  right: -2px;
+  top: 4px;
+  width: 4px;
+  background-color: white;
+  border-radius: 5px;
+  animation: fadeEffect 1.2s;
+}
+#tab a[aria-selected=true] svg {
+  color: white;
+}
+#tab a:first-child {
+  padding: 10px 0 20px 0;
+}
+#tab .user-profile-img {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.439);
+}
+#tab .user-profile-img img {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+}
+#tab .show-hide-arrow {
+  color: white;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.439);
+  padding: 14px 0;
+  cursor: pointer;
+}
+#tab .show-hide-arrow svg {
+  font-size: 22px;
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.chat-slide-menu {
+  transition: all 0.5s;
+}
+.chat-slide-menu.active {
+  transform: translateX(-24rem);
+}
+
+.tabs-content #profile, .tabs-content #message, .tabs-content #contact, .tabs-content #setting {
+  max-width: 301px;
+  min-width: 300px;
+  height: 100vh;
+  width: 300px;
+  max-width: 300px;
+  color: white;
+  animation: fadeEffect 1.2s;
+}
+
+.chat-slide-menu {
+  background-color: black;
+}
+
+#profile .profile-back {
+  position: relative;
+}
+#profile .content-back {
+  position: relative;
+  height: 10rem;
+  background-image: url("./img/back.jpg");
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 10px;
+}
+#profile .content-back .content {
+  display: flex;
+  justify-content: start;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 5px 13px;
+}
+#profile .content-back h1 {
+  font-size: 19px;
+  font-weight: bold;
+}
+#profile .profile-img {
+  position: absolute;
+  top: 71%;
+  left: 36%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#profile .profile-img img {
+  width: 5.2rem;
+  height: auto;
+}
+#profile .profile-desc {
+  margin-top: 3.5rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  border-bottom: 0.1px solid rgb(121, 118, 118);
+}
+#profile .profile-desc h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#profile .profile-desc p {
+  color: rgb(121, 118, 118);
+}
+#profile .profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+}
+#profile .profile-details .detail-item {
+  border-bottom: 0.1px solid rgb(121, 118, 118);
+  padding-bottom: 10px;
+}
+#profile .profile-details h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  margin-left: 15px;
+}
+#profile .profile-details p {
+  font-size: 15px;
+  color: gray;
+  margin-left: 15px;
+}
+#profile .profile-details .detail-item:last-child p {
+  color: rgb(45, 194, 65);
+  padding-left: 4px;
+}
+#profile .profile-details .detail-item:last-child p::before {
+  content: "";
+  display: inline-block;
+  padding: 2px;
+  margin-right: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+  background-color: rgb(45, 194, 65);
+}
+
+#message {
+  color: white;
+  padding: 10px;
+  overflow: hidden;
+}
+#message h3 {
+  font-size: 26px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+#message #form-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+#message #form-search input {
+  outline: none;
+  width: 91%;
+  height: 36px;
+  border: none;
+  background-color: white;
+  border-bottom: 0.1px solid black;
+  border-radius: 20px;
+  padding-left: 15px;
+  color: white;
+  transition: all 0.4s;
+}
+#message #form-search input:focus {
+  background-color: transparent;
+  border-bottom-color: white;
+  border-radius: 0;
+}
+#message #form-search button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+#message #form-search svg {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+#message .all-users {
+  max-height: 430px;
+  height: 429px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+#message .all-users::-webkit-scrollbar {
+  width: 8px;
+}
+#message .all-users::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+#message .all-users::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.439);
+  border-radius: 10px;
+}
+#message .all-users::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+#message .all-users a:hover > .user {
+  background-color: rgba(128, 128, 128, 0.439);
+}
+#message .all-users h3 {
+  font-size: 16px;
+}
+#message .all-users .user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.1px solid rgb(121, 118, 118);
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+#message .all-users .user .msg-waiting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 8px;
+  padding: 2px 6px;
+  background-color: rgb(210, 208, 208);
+  border-radius: 50%;
+  color: black;
+}
+#message .all-users .user .msg-waiting span {
+  font-size: 14px;
+  border-radius: 50%;
+}
+#message .all-users .user-img img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#message .all-users .user-detail {
+  margin-left: 8px;
+}
+#message .all-users .user-detail h4 {
+  color: white;
+  font-size: 17px;
+}
+#message .all-users .user-detail p {
+  font-size: 13px;
+  color: gray;
+}
+#message .all-users #end {
+  height: 10px;
+  margin: 5px 0 2px 0;
+}
+
+#contact {
+  color: white;
+  padding: 10px;
+}
+#contact h3 {
+  font-size: 26px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+#contact #form-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+#contact #form-search input {
+  outline: none;
+  width: 91%;
+  height: 36px;
+  border: none;
+  background-color: white;
+  border-bottom: 0.1px solid black;
+  border-radius: 20px;
+  padding-left: 15px;
+  color: white;
+  transition: all 0.4s;
+}
+#contact #form-search input:focus {
+  background-color: transparent;
+  border-bottom-color: white;
+  border-radius: 0;
+}
+#contact #form-search button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+#contact #form-search svg {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+#contact .contacts-content {
+  max-height: 430px;
+  height: 429px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+  margin-top: 30px;
+}
+#contact .contacts-content::-webkit-scrollbar {
+  width: 8px;
+}
+#contact .contacts-content::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+#contact .contacts-content::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.439);
+  border-radius: 10px;
+}
+#contact .contacts-content::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+#contact .sort-letter {
+  display: flex;
+  align-items: center;
+}
+#contact .sort-letter p {
+  width: 10px;
+  font-size: 17px;
+  margin-right: 20px;
+}
+#contact .sort-letter span {
+  display: inline-block;
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.439);
+  width: 100%;
+}
+#contact .contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+#contact .contact .contact-info {
+  display: flex;
+  align-items: center;
+}
+#contact .contact .contact-info img {
+  width: 50px;
+  height: auto;
+  border-radius: 20%;
+  margin-right: 10px;
+}
+#contact .contact svg {
+  color: white;
+  width: 20px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+#contact .contact .more {
+  position: relative;
+}
+#contact .contact #dropdown {
+  display: none;
+  flex-direction: column;
+  background-color: gray;
+  right: 9px;
+  width: 6rem;
+  border-radius: 5px 0 5px 5px;
+  padding: 5px;
+  position: absolute;
+  animation: fadeEffect 0.3s;
+  transition: all 0.3s;
+}
+#contact .contact #dropdown.active {
+  display: block;
+}
+#contact .contact #dropdown .dropdown-item {
+  padding: 6px 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#contact .contact #dropdown .dropdown-item:hover {
+  background-color: black;
+}
+#contact .contact #dropdown .dropdown-item:hover > a, #contact .contact #dropdown .dropdown-item:hover a > svg {
+  color: white;
+}
+#contact .contact #dropdown svg {
+  color: black;
+  margin: 0;
+}
+#contact .contact #dropdown a {
+  color: black;
+}
+
+#setting .content-back {
+  position: relative;
+  height: 10rem;
+  background-image: url("./img/back.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#setting .content-back .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 5px 13px;
+}
+#setting .content-back h2 {
+  font-weight: bold;
+  font-size: 19px;
+}
+#setting .content-back .edite {
+  background-color: rgba(128, 128, 128, 0.439);
+  border-radius: 50%;
+  padding: 9px 0px 12px 10px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#setting .content-back .edite svg {
+  margin-right: 10px;
+}
+#setting .content-back .edite:hover {
+  background-color: black;
+}
+#setting .profile-img {
+  position: absolute;
+  top: 71%;
+  left: 36%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#setting .profile-img img {
+  width: 5.2rem;
+  height: auto;
+}
+#setting .camera {
+  position: relative;
+}
+#setting .camera .icon {
+  position: absolute;
+  top: -2rem;
+  left: 47%;
+  padding: 8px;
+  background: gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#setting .camera .icon:hover {
+  background-color: black;
+}
+#setting .profile-desc {
+  margin-top: 3.5rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+#setting .profile-desc h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#setting .profile-desc p {
+  color: rgb(45, 194, 65);
+  padding-left: 4px;
+}
+#setting .profile-desc p::before {
+  content: "";
+  display: inline-block;
+  padding: 2px;
+  margin-right: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+  background-color: rgb(45, 194, 65);
+}
+#setting .parameters {
+  height: 16rem;
+  overflow-y: scroll;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+  display: flex;
+  flex-direction: column;
+}
+#setting .parameters::-webkit-scrollbar {
+  width: 8px;
+}
+#setting .parameters::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+#setting .parameters::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.439);
+  border-radius: 10px;
+}
+#setting .parameters::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+#setting .parameters .parameter {
+  padding: 5px 0;
+  border-bottom: 1px solid rgb(121, 118, 118);
+}
+#setting .parameters .parameter:first-child {
+  border-top: 1px solid rgb(121, 118, 118);
+}
+#setting .parameters .logout {
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 7px 10px;
+  width: 80%;
+  background-color: gray;
+  margin: 20px auto;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#setting .parameters .logout:hover {
+  background-color: transparent;
+  border-color: white;
+}
+#setting .parameters .logout:hover a {
+  color: white;
+}
+#setting .parameters .logout p {
+  text-align: center;
+}
+#setting .parameters .logout a {
+  color: black;
+}
+#setting .parameters .button-accordion {
+  display: flex;
+  align-items: center;
+  color: gray;
+  transition: 0.4s;
+}
+#setting .parameters .button-accordion svg {
+  font-size: 18px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+#setting .parameters .button-accordion:hover #accordion, #setting .parameters .button-accordion:hover svg, #setting .parameters .button-accordion.active #accordion, #setting .parameters .button-accordion.active svg {
+  color: white;
+}
+#setting #accordion {
+  background-color: transparent;
+  color: gray;
+  cursor: pointer;
+  border: none;
+  padding: 7px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+}
+#setting .panel {
+  color: white;
+  padding: 0 18px;
+  background-color: black;
+  display: none;
+  overflow: hidden;
+}
+#setting #form-setting .form-item {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+}
+#setting #form-setting label {
+  margin: 4px 0;
+}
+#setting #form-setting input {
+  height: 35px;
+  color: black;
+  padding-left: 8px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.439);
+  transition: all 0.3s;
+}
+#setting #form-setting input:focus {
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  color: white;
+  border-radius: 0;
+}
+#setting #form-setting button {
+  width: 100%;
+  margin: 10px auto;
+  outline: none;
+  border: none;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#setting #form-setting button:hover {
+  background-color: transparent;
+  border-color: white;
+}
+#setting #form-setting button:hover > svg {
+  color: white;
+}
+#setting #form-setting svg {
+  color: gray;
+  font-size: 28px;
+}
+#setting .security h4 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 7px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#setting .security .logo {
+  display: flex;
+  justify-content: center;
+}
+#setting .security svg {
+  width: 6rem;
+}
+#setting .security .security-desc p {
+  text-align: center;
+  margin: 10px 0;
+}
+#setting .security ul {
+  margin-left: 20px;
+}
+#setting .security ul li {
+  margin: 5px 0;
+}
+#setting .themes {
+  display: flex;
+  justify-content: space-around;
+}
+#setting .themes .light, #setting .themes .dark {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 7px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: all 0.3s;
+}
+#setting .themes .light:hover, #setting .themes .light.active, #setting .themes .dark:hover, #setting .themes .dark.active {
+  border-color: white;
+  background-color: rgba(128, 128, 128, 0.439);
+}
+#setting .themes svg {
+  width: 35px;
+}
+#setting .help p {
+  margin: 10px 0;
+}
+#setting .help a {
+  color: gray;
+  transition: all 0.3s;
+}
+#setting .help a:hover {
+  color: white;
+}
+
+.user-chat {
+  background-color: rgb(8, 17, 47);
+  color: white;
+  width: 100%;
+}
+
+footer {
+  height: 20px;
+  background-color: #b30000;
+  text-align: center;
+  color: white;
+  font-size: 19px;
+}
+
+/* media queries */
+@media screen and (max-width: 990px) {
+  .user-chat {
+    background-color: red;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
