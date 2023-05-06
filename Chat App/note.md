@@ -7,7 +7,7 @@ afficher tous les contacts avec triage
 
 -------- A FAIRE DEMAIN INSHALLAH -----------
 
-
+# ajouter effet light and dark
 # ajouter effet de hide/show sur la scrollbar
 ## mettre un effet de chargement de page pour la page d'acceuil
 

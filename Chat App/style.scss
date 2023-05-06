@@ -15,6 +15,7 @@
 } 
 body{
     background-color: black;
+    @include config-scrolbar-body();
 }
 a{
     text-decoration: none;
@@ -518,7 +519,7 @@ to {opacity: 1;}
     .parameters{
         height: 16rem;
         overflow-y: scroll;
-        @include config-scrolbar();
+        @include config-scrolbar-hided();
         display: flex;
         flex-direction: column;
         .parameter{
@@ -694,14 +695,338 @@ to {opacity: 1;}
 
 }
 
-
+// chat section
 
 .user-chat{
-    background-color: rgb(8, 17, 47);
     color: white;
     width: 100%;
+    background-color: rgba(255, 254, 254, 0.792);
+    background-image: url("./back\ svgs/topography.svg");
+    background-size: cover;
+    .get-started{
+        height: 100vh;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .content{
+            max-width: 24rem;
+        }
+        .logo{
+            svg{
+                font-size: 4rem;
+                color: white;
+                padding: 20px;
+                border: 2px solid white;
+                border-radius: 50%;
+                background: $item-color-trans-gray;
+                transition: all .3s;
+                &:hover{
+                    box-shadow: 0 0 10px 5px white;
+                    background-color: black;
+                }
+            }
+        }
+        h2{
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0 5px 0;
+        }
+        p{
+            font-size: 14px;
+            line-height: 1.3rem;
+            text-transform: capitalize;
+        }
+        button{
+            font-size: 18px;
+            color: white;
+            outline: none;
+            border: 1px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            padding: 15px 30px;
+            margin: 10px 0;
+            background-color: $item-color-trans-gray;
+            transition: all .3s;
+            &:hover{
+                background-color: black;
+                font-weight: bold;
+                box-shadow: 0 0 4px 2px white;
+            }
+        }
+    }
 }
 
+.chat-section{
+    // header
+    .header{
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        box-shadow: 16px -3px 23px 3px gray;
+        .user-status{
+            display: flex;
+            align-items: center;
+            h3{
+                font-size: 18px;
+                font-weight: bold;
+            }
+            p{
+                font-size: 14px;
+                @include active-circle();
+            }
+        }
+        .user-status-img img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    }
+    .icons{
+        display: flex;
+        align-items: center;
+        svg{
+            font-size: 17px;
+            margin-left: 17px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        svg:last-child{
+            width: 28px;
+        }
+    }
+
+    // body
+    .body{
+        background-color: transparent;
+        // max-height: 7rem;
+        height: 26rem;
+        overflow-y: scroll;
+        @include config-scrolbar-hided();
+        p{
+            padding: 15px;
+            font-size: 18px;
+        }
+        .send, .receive{
+            margin: 20px 10px;
+        }
+        .send{
+            display: flex;
+            justify-content: end;
+            margin-top: 20px;
+            p{
+                max-width: 80%;
+                color: black;
+                background-color: white;
+                border-radius: 30px 32px 0;
+                // margin: 10px 0;
+                box-shadow: -4px 3px 11px -5px white;
+            }
+        }
+        .receive{
+            display: flex;
+            justify-content: start;
+            position: relative;
+            // margin: 10px 0 10px 10px;
+            p{
+                max-width: 80%;
+                color: white;
+                background-color: black;
+                border-radius: 0 30px 30px 30px;
+                margin: 15px 0 0 5px;
+                box-shadow: 4px 5px 11px -3px gray;
+            }
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    // footer
+    .footer{
+        background-color: black;
+        display: flex;
+        align-items: center;
+        height: 4rem;
+        svg{
+            margin-left: 18px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .microphone{
+            margin: 0 20px;
+        }
+        .form-chat{
+            width: 100%;
+        }
+    }
+    #form-chat{
+        input{
+            width: 100%;
+            margin-left: 15px;
+            outline: none;
+            height: 2.7rem;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding-left: 20px;
+            transition: all .4s;
+            &:focus{
+                border-radius: 0;
+                background-color: $item-color-trans-gray;
+                color: white;
+            }
+        }
+    }
+}
+
+
+// ----------------------------- //
+//          light css           
+// ----------------------------- //
+
+#root.active{
+    #tab{
+        background-color: $light-color;
+        .show-hide-arrow{
+            svg{
+                color: black;
+            }
+        }
+        a:hover { 
+            color: black;
+        }
+        a[aria-selected="true"]:first-child::after{
+            content: "";
+            background-color: black;
+        }
+        a[aria-selected="true"]::after{
+            background-color: black;
+        }
+        a[aria-selected="true"] svg{
+            color: black;
+        }
+    }
+   #profile, #message, #contact, #setting{
+        background-color: $light-color;
+   }
+   #form-search{
+        input{
+            background-color: black;
+            color: white;
+        }
+        svg{
+            color: black;
+        }
+   }
+   #message{
+        h3, h4, p{
+            color: black;
+        }
+        .msg-waiting{
+            background-color: black;
+            color: white;
+        }
+   }
+   #contact{
+        h3, p, svg, span{
+            color: black;
+        }
+   }
+   #profile{
+        h2, h3 , p{
+            color: black;
+        }
+   }
+   #setting{
+        button, svg{
+            color: #2b2b2b;
+        }
+        button:hover{
+            background-color: transparent;
+            border-color: black;
+        }
+        .button-accordion{
+            &:hover #accordion, &:hover svg, &.active #accordion, &.active svg{
+                color: black;
+            }
+        }
+        .security, .themes, .help, .panel{
+            background-color: $light-color;
+            p, a, ul li{
+                color: black;
+            }
+        }
+        .themes{
+            svg{
+                color: black;
+            }
+            .dark, .light{
+                &:hover, &.active{
+                    border-color: black;
+                    background-color: gray;
+                }
+                &:hover svg, &.active svg{
+                    color: black;
+                }
+            }
+        }
+   }
+   #form-setting{
+        input{
+            background-color: $dark-light-color;
+            color: white;
+        }
+        label{
+            color: black;
+        }
+        button{
+            color: $dark-light-color;
+            &:hover{
+                border-color: black;
+            }
+            &:hover > svg{
+                color: black;
+            }
+        }
+   }
+
+   // chat section
+   .chat-section{
+        .header, .footer{
+            background-color: $light-color;
+            p, h3, svg{
+                color: black;
+            }
+        }
+        .body{
+            .send{
+                p{
+                    background-color: $light-color;
+                }
+            }
+            .receive{
+                p{
+                    background-color: $dark-light-color;
+                }
+            }
+        }
+   }
+   #form-chat{
+        input{
+            background-color: $dark-light-color;
+            color: white;
+        }
+   }
+   .user-chat{
+        background-color: #2b2b2b;
+   }
+}
 
 footer{
     height: 20px;
@@ -716,6 +1041,13 @@ footer{
 @media screen and (max-width: 990px){
     .user-chat{
         background-color: red;
+    }
+}
+@media screen and (max-width: 500px){
+    .chat-section{
+        .body{
+            height: 100%;
+        }
     }
 }
 

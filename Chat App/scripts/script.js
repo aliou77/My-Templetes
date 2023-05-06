@@ -133,23 +133,45 @@ $(document).ready(function(){
          * hide and show the chat slide menu
          */
         hideAndShowSlideMenu(button, slideMenu){
+            
             $(button).on("click", function(){
-                const navWidht = $("nav").width()
                 // console.log(navWidht)
+                const navWidth = $("nav").width()
+                const mainWidth = $("main").width()
                 $(slideMenu).toggleClass("active")
 
                 if($(this).children("svg").hasClass("fa-arrow-left")){
                     $(this).children("svg").removeClass("fa-arrow-left").addClass("fa-arrow-right")
                     $("main .user-chat").css("position", "fixed")
                     $("main .user-chat").css("top", "0")
-                    $("main .user-chat").css("right", "-"+ Math.ceil(navWidht))
+                    $("main .user-chat").css("right", "-"+ Math.ceil(navWidth))
                     $("main .user-chat").css("height",  "100vh")
+                    $("main .user-chat").css("width",  mainWidth-navWidth)
 
                 }else{
                     $(this).children("svg").removeClass("fa-arrow-right").addClass("fa-arrow-left")
                     $("main .user-chat").css("position", "")
+                    $("main .user-chat").css("width",  "100%")
                 }
             })
+
+            window.addEventListener("resize",(e)=>{
+                // le probleme etait le moment de la creation de ces 2 constantes pour le calcule
+                // il faut dans chaque event qu'il recupere les 2 width au lieu de les initialiser en haut des le debut du script
+                // alhamdoulillah
+                const navWidth = $("nav").width()
+                const mainWidth = $("main").width()
+                // si le svg est right et qu'on resize le window on recalcule le width
+                if($(button).children("svg").hasClass("fa-arrow-right")){
+                    // $("main .user-chat").css("right", "-"+ Math.ceil(navWidth))
+                    $("main .user-chat").css("width",   mainWidth-navWidth) 
+                }else{
+                    $("main .user-chat").css("width",  "100%")
+                }
+                // console.log($(button).children("svg").hasClass("fa-arrow-right"))
+            })
+
+            
         }
 
         /**
@@ -159,6 +181,37 @@ $(document).ready(function(){
             $(btn).on("click", (e)=>{
                 $(item).toggleClass("active")
             })
+
+            // Close the dropdown if the user clicks outside of it
+            $(window).on("click", (event)=>{
+                // console.log(event.target.matches("#btn-dropdown")) // => return true si l'evenement de l'element est declencher
+                if (!event.target.matches("#btn-dropdown")) {
+                    // si l'event du button dropdown est declencher on retire la class active
+                    // pour masquer la dropdown
+                    $(item).removeClass("active")
+                }
+            })
+        }
+
+        /**
+         * dark and light theme switch
+         */
+        lightDarkWwitchTheme(dark, light){
+            $(dark).on("click", function(){
+                if(!$(dark).hasClass("active")){
+                    $(dark).addClass("active")
+                    $(light).removeClass("active")
+                    $("#root").removeClass("active")
+                }
+            })
+
+            $(light).on("click", function(){
+                if(!$(light).hasClass("active")){
+                    $(light).addClass("active")
+                    $(dark).removeClass("active")
+                    $("#root").addClass("active")
+                }
+            })
         }
     }
 
@@ -167,4 +220,5 @@ $(document).ready(function(){
     w.changeAccordionColor($(".parameter .button-accordion"))
     w.hideAndShowSlideMenu($("#tab .show-hide-arrow"), $("main .chat-slide-menu"))
     w.createDropdown($("#btn-dropdown"), $("#dropdown"))
+    w.lightDarkWwitchTheme($("#setting .parameter .dark"), $("#setting .parameter .light"))
 });
