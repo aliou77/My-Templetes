@@ -213,12 +213,36 @@ $(document).ready(function(){
                 }
             })
         }
+
+        /**
+         * show and hide password fonctionality
+         */
+        hideSowPassword(eye){
+            $(eye).on("click", function(e){
+                console.log()
+                if($(this).children("svg").hasClass("fa-eye")){
+                    $(this).children("svg").removeClass("fa-eye")
+                    $(this).children("svg").addClass("fa-eye-slash")
+                    $("#password input").attr("type", ()=>{ return "text" })
+                }else{
+                    $(this).children("svg").removeClass("fa-eye-slash")
+                    $(this).children("svg").addClass("fa-eye")
+                    $("#password input").attr("type", ()=>{ return "password" })
+                }
+            })
+        }
+
     }
 
     const w = new Wanna();
-    w.createAccordion($(".parameter #accordion"))
-    w.changeAccordionColor($(".parameter .button-accordion"))
-    w.hideAndShowSlideMenu($("#tab .show-hide-arrow"), $("main .chat-slide-menu"))
-    w.createDropdown($("#btn-dropdown"), $("#dropdown"))
-    w.lightDarkWwitchTheme($("#setting .parameter .dark"), $("#setting .parameter .light"))
+    try {
+        w.createAccordion($(".parameter #accordion"))
+        w.changeAccordionColor($(".parameter .button-accordion"))
+        w.hideAndShowSlideMenu($("#tab .show-hide-arrow"), $("main .chat-slide-menu"))
+        w.createDropdown($("#btn-dropdown"), $("#dropdown"))
+        w.lightDarkWwitchTheme($("#setting .parameter .dark"), $("#setting .parameter .light"))
+        w.hideSowPassword($("#eye"))
+    } catch (error) {
+        console.log("il ya eu un soucis dans script.js \n" + error)
+    }
 });
