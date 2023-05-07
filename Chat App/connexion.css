@@ -164,7 +164,10 @@ section h1 {
   color: black;
 }
 #form-login input[type=checkbox] {
+<<<<<<< HEAD
   cursor: pointer;
+=======
+>>>>>>> c80d8292546e57502c005ddb33e79526e5345215
   width: 15px;
   margin-right: 7px;
 }
