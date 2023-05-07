@@ -30,6 +30,10 @@ section {
   border-radius: 35px;
   box-shadow: 0 0 5px 5px 5px white;
 }
+section .header {
+  border-bottom: 1px solid white;
+  margin-bottom: 20px;
+}
 section h1 {
   color: white;
   font-size: 25px;
@@ -60,6 +64,9 @@ section h1 {
 #form-signup .form-item:nth-child(6) {
   display: flex;
   align-items: center;
+}
+#form-signup .form-item:nth-child(6) label {
+  cursor: pointer;
 }
 #form-signup input {
   height: 35px;
@@ -99,7 +106,7 @@ section h1 {
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   background-color: rgba(37, 37, 37, 0.88);
   transition: all 0.4s;
 }
@@ -116,6 +123,83 @@ section h1 {
   transition: all 0.3s;
 }
 #form-signup .footer a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+#form-login {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+#form-login .form-item {
+  margin: 10px 0;
+  position: relative;
+}
+#form-login .form-item:nth-child(3) {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+#form-login .form-item:nth-child(3) label {
+  cursor: pointer;
+}
+#form-login input {
+  height: 35px;
+  width: 100%;
+  outline: none;
+  background-color: rgba(37, 37, 37, 0.88);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: black;
+  padding-left: 10px;
+  transition: all 0.4s;
+}
+#form-login input:focus {
+  border: 1px solid white;
+  box-shadow: 1px 3px 7px -1px white;
+  background-color: white;
+  color: black;
+}
+#form-login input[type=checkbox] {
+  width: 15px;
+  margin-right: 7px;
+}
+#form-login input[type=checkbox]:focus {
+  box-shadow: none;
+}
+#form-login #eye {
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  top: 22%;
+  right: 10px;
+}
+#form-login button {
+  height: 35px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  background-color: rgba(37, 37, 37, 0.88);
+  transition: all 0.4s;
+}
+#form-login button:hover {
+  background-color: rgba(255, 255, 255, 0.828);
+  color: black;
+}
+#form-login .footer {
+  text-align: center;
+  color: gray;
+}
+#form-login .footer a {
+  color: gray;
+  transition: all 0.3s;
+}
+#form-login .footer a:hover {
   text-decoration: underline;
   color: white;
 }
