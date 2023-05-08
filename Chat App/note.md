@@ -5,7 +5,7 @@ afficher tous les users et le dernier message recu ou envoyer et le nombre de me
 
 
 -------- PLAN -----------
-- creer la db (MCD, MLD)
+<!-- - creer la db (MCD, MLD) -->
 - creer les entity dans la db avec doctrine
 - ajout d'un utilisateur dans la db et le configurer dans symfony (pour l'inscription et la connexion)
 - mettre en place la deconnexion
@@ -21,13 +21,31 @@ afficher tous les users et le dernier message recu ou envoyer et le nombre de me
 
 
 -------- A FAIRE INSHALLAH -----------
-- ajouter envoie image, et audio
-- possibilite de supprimer un message dans le chat
-- afficher les infos du destinataire avec un modal lorsqu'on click sur les more vertical
-- ajouter le cercle vert dans messages pour montrer que le user est actif
+- ajouter l'heure de l'envoie d'un message en bas du message
+- ajouter dans un champs de modification de la description du user dans setting
 
 
 -------------------- fonctionnalities -----------------------------
 audio send, emettre un son lors de l'envoie ou reception du message
 image send
 capable to download an image or delete it from messages
+
+----------------- En attante -----------------------------
+- ajouter envoie audio
+- possibilite de supprimer un message dans le chat
+
+--------------------- creation des entitees ---------------------
+- users et users_deleted => relation manyTOmany et aussi users_blocked
+# NB: lors de l'insertion des donnees dans la tables users_deleted :
+les fk(user_deling et user_deleted) ne seront pas lier a la table users, les donnees seront ajouter manuelement
+pour que la recuperation des users soit plus facile.
+
+- users et messages => relation manyTOone
+# NB: la fk sera dans messages (sender_id)
+et recepient_id sera ajouter manuellement
+
+
+
+
+
+

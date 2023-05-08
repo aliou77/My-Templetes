@@ -181,16 +181,6 @@ $(document).ready(function(){
             $(btn).on("click", (e)=>{
                 $(item).toggleClass("active")
             })
-
-            // Close the dropdown if the user clicks outside of it
-            $(window).on("click", (event)=>{
-                // console.log(event.target.matches("#btn-dropdown")) // => return true si l'evenement de l'element est declencher
-                if (!event.target.matches("#btn-dropdown")) {
-                    // si l'event du button dropdown est declencher on retire la class active
-                    // pour masquer la dropdown
-                    $(item).removeClass("active")
-                }
-            })
         }
 
         /**
@@ -232,6 +222,50 @@ $(document).ready(function(){
             })
         }
 
+        /**
+         * 
+         */
+        createModal(icon, close){
+            $(icon).on("click", function(){
+                $("#modal-user").addClass("active")
+            })
+
+            $(close).on("click", function(){
+                $("#modal-user").removeClass("active")
+            })
+
+             // Close the dropdown if the user clicks outside of it
+            //  $(window).on("click", (event)=>{
+            //     console.log($(icon).attr("id"))
+            //     // console.log(event.target.matches("#btn-dropdown")) // => return true si l'evenement de l'element est declencher
+            //     if (!event.target.matches(".chat-section .icons svg")) {
+            //         // si l'event du button dropdown est declencher on retire la class active
+            //         // pour masquer la dropdown
+            //         $("#modal-user").removeClass("active")
+            //     }
+            // })
+        }
+
+        /**
+         * discard effect when click on window
+         * @param {string} item
+         */
+        discardEvents(){
+           // Close the dropdown if the user clicks outside of it
+            $(window).on("click", (event)=>{
+                // console.log($("#close"))
+                // console.log(event.target.matches("#btn-dropdown")) // => return true si l'evenement de l'element est declencher
+                if (!event.target.matches("#btn-dropdown")) {
+                    // si l'event du button dropdown est declencher on retire la class active
+                    // pour masquer la dropdown
+                    $("#dropdown").removeClass("active")
+                }
+                if (!event.target.matches("#open-profile")) {
+                    $("#close-profile").removeClass("active")
+                }
+            })
+        }
+
     }
 
     const w = new Wanna();
@@ -242,6 +276,9 @@ $(document).ready(function(){
         w.createDropdown($("#btn-dropdown"), $("#dropdown"))
         w.lightDarkWwitchTheme($("#setting .parameter .dark"), $("#setting .parameter .light"))
         w.hideSowPassword($("#eye"))
+        w.createModal($(".chat-section .icons .more"), $(".chat-section #close-profile"))
+        w.discardEvents()
+        
     } catch (error) {
         console.log("il ya eu un soucis dans script.js \n" + error)
     }
